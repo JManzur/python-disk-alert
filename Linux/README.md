@@ -1,7 +1,7 @@
 
 # Check linux disk capacity and send an email alert
 
-This simple Python script scans a given linux disk (mount point path) and, based on a specified percentage threshold, triggers an email notification that includes a detailed summary of the server and current disk usage. Also a log file is generated every time that the script is run
+This simple Python script scans a given linux disk (mount point path) and, based on a specified percentage threshold, triggers an email notification that includes a detailed summary of the server and current disk usage. Also a log file is generated every time that the script is run.
 
 ## Tested with: 
 
