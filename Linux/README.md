@@ -49,7 +49,7 @@ Cron job:
 
 ## Log file
 
-Every time you run the script, a file called "disk_alert.log" will be generated/updated with information similar to the following:
+Every time you run the script, a log file called "disk_alert.log" will be generated/updated with information similar to the following:
 
 ```log
 2021-07-06 12:55:23,354: WARNING: NOT OK - Email alert has been sent - Partition: "/", Size: 250 GiB, Used: 2 GiB, Free: 235 GiB
