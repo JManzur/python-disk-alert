@@ -58,6 +58,14 @@ Every time you run the script, a file called "disk_alert.log" will be generated/
 
 **Note**: To capture this sample output, I change the "threshold" value, that's why the disk usage is the same in both cases.
 
+## Email Alert:
+
+When the disk usage exceeds the specified threshold, an email alert will be sent with a content similar to the following:
+
+![App Screenshot](https://1.bp.blogspot.com/-AlwzNaMDfhU/YOSyh6sDAtI/AAAAAAAAFoA/Iqk6Lv5MbVM9Zm5Hmxvfh1os14LsQ2sXACLcBGAsYHQ/s402/disk_alert_email.png)
+
+**Note**: None of the values need to be hard-coded, each one (hostname, IP, threshold, and disk-related information) is generated automatically.
+
 ## Author
 
 - [@JManzur](https://www.github.com/jmanzur)
