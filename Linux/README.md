@@ -12,7 +12,7 @@ This simple Python script scans a given linux disk (mount point path) and, based
 
 ## How-To
 
-First you need to create a file called "mail_cred.yml" located in the root folder with content similar to the following:
+First you need to create a file called "mail_cred.yml" located in the root folder with a content similar to the following:
 
 ```bash
 ADDRESS: 'sender@gmail.com'
@@ -20,7 +20,7 @@ PASSWORD: 'xxxxxxxxxxxxxxxxx'
 SEND_TO: 'recipient@example.com'
 #SEND_TO: 'one@example.com, two@example.com, three@example.com'
 ```
-After that you need to install the necesaries python requirements runing:
+After that you need to install the necessaries python requirements, by runing:
 
 ```bash
 pip3 install -r requirements.txt
@@ -30,24 +30,33 @@ Finally, set the variables "threshold" and "partition" to whatever you decide an
 ```bash
 python3 linux_disk_alert.py
 ```
-And when you're ready, go ahead and set up a cron job to run it on a regular base
+And when you're ready go ahead and set up a cron job to run it on a regular basis. In my case (because I'm using the PyYAML module to load the email credential), I'm calling a simple bash script from crontab:
 
-## Logging Levels
+Script:
+```bash
+#!/bin/bash
+cd /opt/scripts/disk_alert
+python3 linux_disk_alert.py
+```
 
-- **DEBUG**: Detailed information, typically of interest only when diagnosing problems.
-- **INFO**: Confirmation that things are working as expected.
-- **WARNING**: An indication that something unexpected happened, or indicative of some problem in the near future (e.g. ‘disk space low’). The software is still working as expected.
-- **ERROR**: Due to a more serious problem, the software has not been able to perform some function.
-- **CRITICAL**: A serious error, indicating that the program itself may be unable to continue running.
+Cron job:
+```bash
+# Python Disk-Alert [Run daily at 23:30]:
+30 23 * * * /opt/scripts/disk_alert/run_script.sh
+```
 
-### Log output example
+**NOTE**: Change the paths as required
 
-Note: To capture this sample output, I change the "threshold" value, that's why the disk usage is the same in both cases.
+## Log file
+
+Every time you run the script, a file called "disk_alert.log" will be generated/updated with information similar to the following:
 
 ```log
 2021-07-06 12:55:23,354: WARNING: NOT OK - Email alert has been sent - Partition: "/", Size: 250 GiB, Used: 2 GiB, Free: 235 GiB
 2021-07-06 12:56:03,972: INFO: OK - Partition: "/", Size: 250 GiB, Used: 2 GiB, Free: 235 GiB
 ```
+
+**Note**: To capture this sample output, I change the "threshold" value, that's why the disk usage is the same in both cases.
 
 ## Author
 

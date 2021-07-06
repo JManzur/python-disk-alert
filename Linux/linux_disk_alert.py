@@ -59,8 +59,8 @@ def send_email():
         smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
         smtp.send_message(msg)
 
-#Check disk funtion
-def check_once():
+# Check disk funtion
+def check_disk():
     df = subprocess.Popen(["df","-h"], stdout=subprocess.PIPE)
     for line in df.stdout:
         splitline = line.decode().split()
@@ -72,4 +72,4 @@ def check_once():
                 logging.info("""OK - Partition: "{0:}", Size: {1:} GiB, Used: {2:} GiB, Free: {3:} GiB""".format(partition, p_total, p_used, p_free))
 
 if __name__ == "__main__":
-    check_once()
+    check_disk()
