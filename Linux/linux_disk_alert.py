@@ -67,9 +67,9 @@ def check_disk():
         if splitline[5] == partition:
             if int(splitline[4][:-1]) > threshold:
                 send_email()
-                logging.warning("""NOT OK - Email alert has been sent - Partition: "{0:}", Size: {1:} GiB, Used: {2:} GiB, Free: {3:} GiB""".format(partition, p_total, p_used, p_free))
+                logging.warning('NOT OK - Email alert has been sent - Partition: "{0:}", Size: {1:} GiB, Used: {2:} GiB, Free: {3:} GiB'.format(partition, p_total, p_used, p_free))
             if int(splitline[4][:-1]) < threshold:
-                logging.info("""OK - Partition: "{0:}", Size: {1:} GiB, Used: {2:} GiB, Free: {3:} GiB""".format(partition, p_total, p_used, p_free))
+                logging.info('OK - Partition: "{0:}", Size: {1:} GiB, Used: {2:} GiB, Free: {3:} GiB'.format(partition, p_total, p_used, p_free))
 
 if __name__ == "__main__":
     check_disk()
