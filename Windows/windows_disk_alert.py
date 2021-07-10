@@ -57,12 +57,12 @@ def check_disk():
             devices[p.device] = disk_used_percent
             file_system = p.fstype
             
-            if disk_used_percent < threshold:
+            if disk_used_percent > threshold:
                 send_email()
                 logging.warning('Drive: "{0:}", Total Size: {1:} GiB, Used: {2:}, Free: {3:} GiB, Usage Percentage: {4:}%, File System: {5:}.'.format(p.device, total_gb_short, used_gb_short, free_gb_short, disk_used_percent, file_system))
                 logging.warning('NOT OK - Email alert has been sent - Drive "{0:}" has a usage percentage greater than the defined threshold of {1:}%'.format(p.device, threshold))
 
-            elif disk_used_percent > threshold:
+            elif disk_used_percent < threshold:
                 logging.info('Drive: "{0:}", Total Size: {1:} GiB, Used: {2:}, Free: {3:} GiB, Usage Percentage: {4:}%, File System: {5:}.'.format(p.device, total_gb_short, used_gb_short, free_gb_short, disk_used_percent, file_system))
                 logging.info('OK - Drive "{0:}" has a usage percentage less than the defined threshold of {1:}%'.format(p.device, threshold))
 
