@@ -10,7 +10,7 @@ This simple Python script scans a given Windows drive (mount point) and, based o
 
 ## How-To
 
-First you need to create a file called "mail_cred.yml" located in the root folder with a content similar to the following:
+Create a file called "mail_cred.yml" located in the root folder with a content similar to the following:
 
 ```bash
 ADDRESS: 'sender@gmail.com'
@@ -18,7 +18,7 @@ PASSWORD: 'xxxxxxxxxxxxxxxxx'
 SEND_TO: 'recipient@example.com'
 #SEND_TO: 'one@example.com, two@example.com, three@example.com'
 ```
-After that you need to install the necessaries python requirements, by runing:
+Install the necessaries python requirements, by runing:
 
 ```bash
 pip3 install -r requirements.txt
