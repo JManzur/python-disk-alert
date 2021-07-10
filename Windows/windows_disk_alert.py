@@ -10,7 +10,7 @@ import yaml
 logging.basicConfig(filename='wdisk_alert.log', level=logging.INFO, format='%(asctime)s: %(levelname)s: %(message)s')
 
 # threshold definition (percentage)
-threshold = 44
+threshold = 50
 
 # Get Date, Hostname and IP
 now_date = (time.strftime("%Y-%m-%d - %H:%M"))
@@ -57,15 +57,13 @@ def check_disk():
             devices[p.device] = disk_used_percent
             file_system = p.fstype
             
-            if disk_used_percent > threshold:
+            if disk_used_percent < threshold:
                 send_email()
                 logging.warning('Drive: "{0:}", Total Size: {1:} GiB, Used: {2:}, Free: {3:} GiB, Usage Percentage: {4:}%, File System: {5:}.'.format(p.device, total_gb_short, used_gb_short, free_gb_short, disk_used_percent, file_system))
                 logging.warning('NOT OK - Email alert has been sent - Drive "{0:}" has a usage percentage greater than the defined threshold of {1:}%'.format(p.device, threshold))
 
-            elif disk_used_percent < threshold:
-                logging.info("""\
-                    Drive: "{0:}", Total Size: {1:} GiB, Used: {2:}, Free: {3:} GiB, Usage Percentage: {4:}%, File System: {5:}.
-                    """.format(p.device, total_gb_short, used_gb_short, free_gb_short, disk_used_percent, file_system))
+            elif disk_used_percent > threshold:
+                logging.info('Drive: "{0:}", Total Size: {1:} GiB, Used: {2:}, Free: {3:} GiB, Usage Percentage: {4:}%, File System: {5:}.'.format(p.device, total_gb_short, used_gb_short, free_gb_short, disk_used_percent, file_system))
                 logging.info('OK - Drive "{0:}" has a usage percentage less than the defined threshold of {1:}%'.format(p.device, threshold))
 
 # Send Mail funtion
