@@ -79,6 +79,12 @@ When the disk usage exceeds the specified threshold, an email alert will be sent
 
 **Note**: None of the values need to be hard-coded, each one (hostname, IP, threshold, and disk-related information) is generated automatically.
 
+## Debugging / Troubleshooting:
+
+
+#### **Known issue #1**: Error running with python3
+ - **Issue**: If when you run the powershell script you get an error, change it to python instead of python3
+
 ## Author
 
 - [@JManzur](https://www.github.com/jmanzur)
